@@ -14,4 +14,5 @@ wget "https://github.com/neovim/neovim/releases/download/v0${NVIM_VERSION}/nvim-
 tar -xf nvim-linux-x86_64
 sudo cp nvim-linux-x86_64/bin/nvim /usr/local/bin
 
-git clone https://github.com/JhonathanWolff/nvim.git $HOME/.config/nvim
+git clone git@github.com:JhonathanWolff/nvim.git $HOME/.config/nvim
+rm -rf nvim-linux-x86_64
