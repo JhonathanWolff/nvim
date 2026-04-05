@@ -1,0 +1,114 @@
+vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
+vim.keymap.set("n", "i", "<CMD>nohlsearch<CR>i", { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap("x", "p", "pgvy", { noremap = true, silent = true })
+
+-- comment line
+vim.api.nvim_set_keymap(
+	"x",
+	"<C-k>",
+	":lua require('Comment.api').locked('toggle.linewise')(vim.fn.visualmode())<CR>",
+	{ noremap = true, silent = true }
+)
+
+-- navegacao
+vim.api.nvim_set_keymap("n", "<S-Tab>", ":bprev<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<Tab>", ":bnext<CR>", { noremap = true })
+vim.api.nvim_set_keymap("i", "jk", "<esc>", { noremap = true })
+--vim.api.nvim_set_keymap("n", "<leader>qq", ":q!<CR>", { noremap = true })
+
+--buffer
+vim.api.nvim_set_keymap("n", "<leader>bc", ":bd<CR>", { noremap = true, desc = "Close current Buffer" })
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>ba",
+	": %bd | e# | bd#<CR>",
+	{ noremap = true, desc = "Close all buffers except this one" }
+)
+
+--Jumplist
+vim.keymap.set('n', '<C-o>', '<C-o>zz', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-i>', '<C-i>zz', { noremap = true, silent = true })
+vim.keymap.set('n', 'n', 'nzz', { noremap = true, silent = true })
+
+
+--editor
+vim.keymap.set("n", "|", ":vsplit<CR>", { noremap = true })
+
+-- move selection copy
+vim.api.nvim_set_keymap("x", ">", ">gv", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("x", "<", "<gv", { noremap = true, silent = true })
+
+-- comand line
+vim.api.nvim_set_keymap("n", "zs", ":w<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<C-s>", ":w<CR>", { noremap = true })
+vim.api.nvim_set_keymap("i", "<C-s>", "<cmd>w<CR>", { noremap = true })
+
+vim.api.nvim_set_keymap("n", "<C-w>", ":q<CR>", { noremap = true })
+
+
+--TELESCOPE
+--vim.api.nvim_set_keymap("n", "ga", ":Telescope lsp_incoming_calls<CR>", { noremap = false, silent = true })
+vim.api.nvim_set_keymap("v", "<leader>fc", "y<ESC>:Telescope grep_string default_text=<C-R>0<cr>", { noremap = false })
+
+-- move windows
+vim.api.nvim_set_keymap("n", "<C-k>", ":wincmd k<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<C-j>", ":wincmd j<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<C-h>", ":wincmd h<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<C-l>", ":wincmd l<CR>", { silent = true })
+
+
+
+--LSP
+vim.api.nvim_set_keymap('n', '<space>se', '<cmd>lua vim.diagnostic.open_float()<CR>', {noremap=true, silent=true})
+
+vim.keymap.set('n', '<leader>rr', function() vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR, wrap = true }) end, {noremap=true,silent=true, desc="Go To Next Error"})
+vim.keymap.set('n', '<leader>rR', function() vim.diagnostic.goto_previous({ severity = vim.diagnostic.severity.ERROR, wrap = true }) end, {noremap=true,silent=true, desc="Go To Next Error"})
+vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { noremap=true, silent=true, desc = "Code Action" })
+vim.keymap.set('n', '<C-.>', vim.lsp.buf.code_action, { noremap=true, silent=true, desc = "Code Action" })
+
+--Lens
+vim.api.nvim_set_keymap("n","<leader>lt",":ErrorLensToggle<CR>",{noremap=true,silent=true,desc="Toggle Error Lens"})
+
+
+--docstring generator
+vim.api.nvim_set_keymap("n","<leader>md","<Plug>(pydocstring)",{noremap=true,silent=true,desc="Make Docstring Google Style"})
+vim.api.nvim_set_keymap("v","<leader>md","<Plug>(pydocstring)",{noremap=true,silent=true,desc="Make Docstring Google Style"})
+
+--quickfix
+vim.keymap.set('n', '<A-j>', ':cnext<CR>zz', { desc = 'Next Quickfix', silent = true })
+vim.keymap.set('n', '<A-k>', ':cprev<CR>zz', { desc = 'Previous Quickfix', silent = true })
+
+
+-- big jump
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Big Jump', silent = true })
+vim.keymap.set('n', '<C-u>', '<C-u><CR>zz', { desc = 'Big Jump', silent = true })
+
+
+-- Debugger
+local dap =require("dap")
+local dap_view =require("dap-view")
+vim.keymap.set("n", "<leader>dt", dap.toggle_breakpoint, {desc="Dap Toogle BreakPoint"})
+vim.keymap.set("n", "<leader>dd", dap.continue, {desc="DAP Continue"})
+vim.keymap.set("n", "<leader>do", dap.step_over, {desc="DAP Step Over"})
+vim.keymap.set("n", "<leader>di", dap.step_into, {desc="DAP Step Into"})
+vim.keymap.set("n", "<leader>do", dap.step_out, {desc="DAP Step Out"})
+vim.keymap.set("n", "<leader>ds", dap.disconnect, {desc="DAP Disconnect"})
+vim.keymap.set("n", "<leader>dvc", dap_view.toggle, {desc="DAP View Toggle"})
+
+vim.keymap.set("n", "<leader>dvv", "<cmd>DapVirtualTextToggle<CR>", {desc="DAP Text View Toggle"})
+
+
+-- quick fix
+vim.keymap.set("n", "<leader>qq", function()
+  require("quicker").toggle()
+end, {
+  desc = "Toggle quickfix",
+})
+vim.keymap.set("n", "<leader>ql", function()
+  require("quicker").toggle({ loclist = true })
+end, {
+  desc = "Toggle loclist",
+})
+
