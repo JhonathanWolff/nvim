@@ -11,3 +11,6 @@ curl -sL https://raw.githubusercontent.com/JhonathanWolff/nvim/refs/heads/main/r
 ```
 git clone git@github.com:JhonathanWolff/nvim.git $HOME/.config/nvim
 ```
+
+
+
