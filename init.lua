@@ -46,5 +46,6 @@ require("config.lsp_configs")
 vim.filetype.add({
   extension = {
     sqlx = 'sql', -- Tell Neovim to treat .sqlx as sql
+    jsonl = 'json'
   },
 })
