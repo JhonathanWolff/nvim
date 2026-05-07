@@ -7,6 +7,7 @@ return {
 		treesiter.install({
             "dockerfile",
             "terraform",
+            "regex",
             "csv",
 			"html",
 			"css",
