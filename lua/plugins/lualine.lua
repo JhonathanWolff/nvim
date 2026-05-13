@@ -4,6 +4,14 @@ return {
 	config = function()
 		require("lualine").setup({
 			sections = {
+				lualine_a = {
+					{
+						"mode",
+						fmt = function(str)
+							return str
+						end,
+					},
+				},
 				lualine_c = {
 					{
 						"filename",
