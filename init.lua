@@ -48,3 +48,7 @@ vim.filetype.add({
     jsonl = 'json'
   },
 })
+
+
+--vue setup
+require("config.vue_config")
