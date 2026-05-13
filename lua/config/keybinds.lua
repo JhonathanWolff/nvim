@@ -68,8 +68,13 @@ vim.keymap.set('n', '<leader>rR', function() vim.diagnostic.goto_previous({ seve
 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { noremap=true, silent=true, desc = "Code Action" })
 vim.keymap.set('n', '<C-.>', vim.lsp.buf.code_action, { noremap=true, silent=true, desc = "Code Action" })
 
+--git
+vim.keymap.set('n', '<leader>B', "<cmd>GitBlameToggle<CR>", { noremap=true, silent=true, desc = "Code Action" })
+
+
 --Lens
-vim.api.nvim_set_keymap("n","<leader>lt",":ErrorLensToggle<CR>",{noremap=true,silent=true,desc="Toggle Error Lens"})
+-- vim.api.nvim_set_keymap("n","<leader>lt",":ErrorLensToggle<CR>",{noremap=true,silent=true,desc="Toggle Error Lens"})
+
 
 
 --docstring generator
