@@ -1,5 +1,3 @@
-
-
 -- highlight yank
 vim.api.nvim_create_autocmd("TextYankPost", {
 	group = vim.api.nvim_create_augroup("highlight_yank", { clear = true }),
@@ -31,20 +29,37 @@ vim.api.nvim_create_autocmd("FileType", {
 	command = "wincmd L",
 })
 
-
 vim.api.nvim_create_autocmd("BufWritePre", {
-  group = vim.api.nvim_create_augroup("trim_whitespace_group", { clear = true }),
-  pattern = "*",
-  command = [[%s/\s\+$//e]],
+	group = vim.api.nvim_create_augroup("trim_whitespace_group", { clear = true }),
+	pattern = "*",
+	command = [[%s/\s\+$//e]],
 })
 
 -- Make treesite highlight functions and classes
 vim.api.nvim_create_autocmd("FileType", {
-  group = vim.api.nvim_create_augroup("EnableTreesitterHighlighting", { clear = true }),
-  desc = "Try to enable tree-sitter syntax highlighting",
-  pattern = "*", -- run on *all* filetypes
-  callback = function()
-    pcall(function() vim.treesitter.start() end)
-  end,
+	group = vim.api.nvim_create_augroup("EnableTreesitterHighlighting", { clear = true }),
+	desc = "Try to enable tree-sitter syntax highlighting",
+	pattern = "*", -- run on *all* filetypes
+	callback = function()
+		pcall(function()
+			vim.treesitter.start()
+		end)
+	end,
 })
 
+--- highlight unicode
+-- vim.api.nvim_set_hl(0, "NonAsciiKey", { bg = "#5f0000", fg = "#ffffff", bold = true })
+--
+-- local function is_normal_buffer()
+-- return vim.bo.buftype == ""
+--   and vim.fn.bufname() ~= ""
+--   and vim.fn.bufname() ~= "[No Name]"
+-- end
+--
+-- vim.api.nvim_create_autocmd({ "BufWinEnter", "WinNew" }, {
+-- 	callback = function()
+-- 		if is_normal_buffer() then
+--             vim.fn.matchadd("NonAsciiKey", "[^\\x00-\\x7F]")
+-- 		end
+-- 	end,
+-- })
