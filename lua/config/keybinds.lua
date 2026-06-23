@@ -110,9 +110,25 @@ vim.keymap.set("n", "<leader>qq", function()
 end, {
   desc = "Toggle quickfix",
 })
-vim.keymap.set("n", "<leader>ql", function()
-  require("quicker").toggle({ loclist = true })
-end, {
-  desc = "Toggle loclist",
-})
 
+-- vim.keymap.set("n", "<leader>ql", function()
+--   require("quicker").toggle({ loclist = true })
+-- end, {
+--   desc = "Toggle loclist",
+-- })
+
+
+--- Session Manager
+
+local persist = require("persistence")
+
+-- load the session for the current directory
+vim.keymap.set("n", "<leader>qs", function() persist.load() end,{desc="Load current dir Session"})
+
+-- select a session to load
+vim.keymap.set("n", "<leader>qS", function() persist.select() end,{desc="Picker current sessions"})
+
+-- load the last session
+vim.keymap.set("n", "<leader>ql", function() persist.load({ last = true }) end,{desc="Load Last Session"})
+
+vim.keymap.set("n", "<leader>qd", function() persist.stop() end,{desc="stop Session Save on exit"})
