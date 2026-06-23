@@ -41,6 +41,9 @@ require("config.daps.javascript")
 --auto CMD
 require("autocmds.autocmd")
 
+-- commands User
+require('user_commands.lsp')
+
 -- extra lsp config
 require("config.lsp_configs")
 
