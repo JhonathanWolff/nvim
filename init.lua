@@ -56,3 +56,6 @@ vim.filetype.add({
 
 --vue setup
 require("config.vue_config")
+
+vim.cmd("packadd nvim.undotree")
+vim.keymap.set("n", "<leader>uu", require("undotree").open)
