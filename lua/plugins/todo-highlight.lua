@@ -1,6 +1,8 @@
 return {
 	"folke/todo-comments.nvim",
 	dependencies = { "nvim-lua/plenary.nvim" },
+	event = { "BufReadPost", "BufNewFile" },
+	cmd = { "TodoTelescope", "TodoQuickFix", "TodoTrouble" },
 	opts = {
         highlight = {
              pattern = [[.*<(KEYWORDS)\s*\s]]

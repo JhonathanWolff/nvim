@@ -2,24 +2,21 @@ return
 {
     'nvim-telescope/telescope.nvim',
     version = '*',
+    cmd = "Telescope",
+    keys = {
+        { '<leader>ff', function() require('telescope.builtin').find_files() end, desc = 'Telescope find files' },
+        { '<leader>fw', function() require('telescope.builtin').live_grep() end, desc = 'Telescope live grep' },
+        { '<leader>fb', function() require('telescope.builtin').buffers() end, desc = 'Telescope buffers' },
+        { '<leader>fh', function() require('telescope.builtin').help_tags() end, desc = 'Telescope help tags' },
+        { '<leader>fr', function() require('telescope.builtin').diagnostics() end, desc = 'Telescope all diagnostics' },
+        { '<leader>ft', '<cmd>TodoTelescope<CR>', desc = 'Open Telescope TODO List' },
+    },
     dependencies = {
         'nvim-lua/plenary.nvim',
         -- optional but recommended
         { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     },
     config = function()
-        local builtin = require('telescope.builtin')
-        vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
-        vim.keymap.set('n', '<leader>fw', builtin.live_grep, { desc = 'Telescope live grep' })
-        vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
-        vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
-        vim.keymap.set('n', '<leader>fr', builtin.diagnostics, { desc = 'Telescope all diagnostics' })
-
-
-
-        -- folke todo
-        vim.keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<CR>", { desc = "Open Telescope TODO List" })
-
         local actions = require('telescope.actions')
         require('telescope').setup {
             defaults = {
