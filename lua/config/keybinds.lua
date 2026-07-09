@@ -90,18 +90,8 @@ vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Big Jump', silent = true })
 vim.keymap.set('n', '<C-u>', '<C-u><CR>zz', { desc = 'Big Jump', silent = true })
 
 
--- Debugger
-local dap =require("dap")
-local dap_view =require("dap-view")
-vim.keymap.set("n", "<leader>dt", dap.toggle_breakpoint, {desc="Dap Toogle BreakPoint"})
-vim.keymap.set("n", "<leader>dd", dap.continue, {desc="DAP Continue"})
-vim.keymap.set("n", "<leader>do", dap.step_over, {desc="DAP Step Over"})
-vim.keymap.set("n", "<leader>di", dap.step_into, {desc="DAP Step Into"})
-vim.keymap.set("n", "<leader>do", dap.step_out, {desc="DAP Step Out"})
-vim.keymap.set("n", "<leader>ds", dap.disconnect, {desc="DAP Disconnect"})
-vim.keymap.set("n", "<leader>dvc", dap_view.toggle, {desc="DAP View Toggle"})
-
-vim.keymap.set("n", "<leader>dvv", "<cmd>DapVirtualTextToggle<CR>", {desc="DAP Text View Toggle"})
+-- Debugger keymaps live in the nvim-dap plugin spec (lua/plugins/vim_dap.lua)
+-- so they lazy-load dap only on first press.
 
 
 -- quick fix
@@ -123,12 +113,12 @@ end, {
 local persist = require("persistence")
 
 -- load the session for the current directory
-vim.keymap.set("n", "<leader>qs", function() persist.load() end,{desc="Load current dir Session"})
+vim.keymap.set("n", "<leader>ql", function() persist.load() end,{desc="Load current dir Session"})
 
 -- select a session to load
 vim.keymap.set("n", "<leader>qS", function() persist.select() end,{desc="Picker current sessions"})
 
 -- load the last session
-vim.keymap.set("n", "<leader>ql", function() persist.load({ last = true }) end,{desc="Load Last Session"})
+--vim.keymap.set("n", "<leader>ql", function() persist.load({ last = true }) end,{desc="Load Last Session"})
 
 vim.keymap.set("n", "<leader>qd", function() persist.stop() end,{desc="stop Session Save on exit"})

@@ -33,9 +33,8 @@ vim.o.autoindent = true
 vim.opt.showtabline = 0
 
 
--- Dap
---require("config.daps.python")
-require("config.daps.javascript")
+-- Dap adapters are configured lazily inside the nvim-dap plugin spec
+-- (lua/plugins/vim_dap.lua), loaded on first <leader>d keypress.
 
 
 --auto CMD

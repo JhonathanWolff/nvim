@@ -5,10 +5,21 @@ return {
         "theHamsta/nvim-dap-virtual-text",
         "mfussenegger/nvim-dap-python"
     },
+	keys = {
+		{ "<leader>dt", function() require("dap").toggle_breakpoint() end, desc = "Dap Toggle BreakPoint" },
+		{ "<leader>dd", function() require("dap").continue() end, desc = "DAP Continue" },
+		{ "<leader>do", function() require("dap").step_over() end, desc = "DAP Step Over" },
+		{ "<leader>di", function() require("dap").step_into() end, desc = "DAP Step Into" },
+		{ "<leader>dO", function() require("dap").step_out() end, desc = "DAP Step Out" },
+		{ "<leader>ds", function() require("dap").disconnect() end, desc = "DAP Disconnect" },
+		{ "<leader>dvc", function() require("dap-view").toggle() end, desc = "DAP View Toggle" },
+		{ "<leader>dvv", "<cmd>DapVirtualTextToggle<CR>", desc = "DAP Text View Toggle" },
+	},
 	config = function()
 
 		local dap = require("dap")
         require('dap-python').setup()
+        require("config.daps.javascript") -- js/ts adapter config
 
         require("nvim-dap-virtual-text").setup({
             enabled=false
