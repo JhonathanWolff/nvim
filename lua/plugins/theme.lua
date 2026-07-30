@@ -4,6 +4,7 @@ return {
     priority = 1000,
     opts = {
         transparent_background = true,
+        term_colors = true,
         integrations = {
             mason = true,
             fidget = true

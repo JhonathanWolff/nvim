@@ -122,3 +122,11 @@ vim.keymap.set("n", "<leader>qS", function() persist.select() end,{desc="Picker 
 --vim.keymap.set("n", "<leader>ql", function() persist.load({ last = true }) end,{desc="Load Last Session"})
 
 vim.keymap.set("n", "<leader>qd", function() persist.stop() end,{desc="stop Session Save on exit"})
+
+
+-- float term
+--
+--vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { navigate = true })
+vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>:FloatermToggle<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('t', '<C-t>', '<C-\\><C-n>:FloatermToggle<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-t>', ':FloatermToggle<CR>', { noremap = true, silent = true })
