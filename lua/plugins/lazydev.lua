@@ -4,6 +4,8 @@ return {
     ft = "lua", -- only load on lua files
     opts = {
       library = {
+        -- tipos do LazySpec: completa event/ft/keys/cmd/dependencies nos specs
+        "lazy.nvim",
         -- See the configuration section for more details
         -- Load luvit types when the `vim.uv` word is found
         { path = "${3rd}/luv/library", words = { "vim%.uv" } },

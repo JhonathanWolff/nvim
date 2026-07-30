@@ -6,6 +6,8 @@ return
   keys = {
     { "<leader>F", function() require("conform").format({ lsp_fallback = true }) end, desc = "Format file" },
   },
+  ---@module "conform"
+  ---@type conform.setupOpts
   opts = {},
   config = function ()
 

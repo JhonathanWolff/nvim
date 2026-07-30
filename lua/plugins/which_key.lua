@@ -2,6 +2,8 @@ return
 {
   "folke/which-key.nvim",
   event = "VeryLazy",
+  ---@module "which-key"
+  ---@type wk.Opts
   opts = {
     -- your configuration comes here
     -- or leave it empty to use the default settings
