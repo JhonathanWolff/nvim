@@ -51,6 +51,11 @@ vim.filetype.add({
     sqlx = 'sql', -- Tell Neovim to treat .sqlx as sql
     jsonl = 'json'
   },
+  pattern = {
+    -- nvim nao detecta isso: sem o filetype composto o docker-compose-langserver nunca anexa
+    ['.*/[Dd]ocker%-[Cc]ompose.*%.ya?ml'] = 'yaml.docker-compose',
+    ['.*/[Cc]ompose.*%.ya?ml'] = 'yaml.docker-compose',
+  },
 })
 
 

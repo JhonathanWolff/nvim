@@ -26,5 +26,7 @@ return {
 			"latex"
 		}) --:wait(300000)
 		treesiter.setup()
+		-- filetype composto do compose precisa apontar pro parser yaml
+		vim.treesitter.language.register("yaml", "yaml.docker-compose")
 	end,
 }
