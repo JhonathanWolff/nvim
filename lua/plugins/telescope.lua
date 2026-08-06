@@ -20,6 +20,12 @@ return
         local actions = require('telescope.actions')
         require('telescope').setup {
             defaults = {
+                vimgrep_arguments = {
+                    'rg', '--color=never', '--no-heading', '--with-filename',
+                    '--line-number', '--column', '--smart-case',
+                    '--no-ignore', '--hidden',
+                },
+                file_ignore_patterns = { '^%.git/', '/%.git/', 'node_modules/' },
                 mappings = {
                     i = {                             -- Mappings for insert mode
                         ["<M-q>"] = actions.send_to_qflist,
@@ -28,6 +34,9 @@ return
                         ["<M-q>"] = actions.send_to_qflist
                     },
                 },
+            },
+            pickers = {
+                find_files = { hidden = true, no_ignore = true },
             },
         }
     end
