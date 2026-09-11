@@ -1,38 +1,38 @@
 -- https://github.com/neovim/nvim-lspconfig/tree/master/lsp
 -- LSP Configuration
 
-vim.lsp.config("yamlls", -- LSP yaml-language-server
-{
-    settings = {
-        yaml = {
-            -- catalogo do schemastore: detecta ansible, gitlab-ci, dependabot, etc.
-            schemaStore = { enable = true, url = "https://www.schemastore.org/api/json/catalog.json" },
-            validate = true,
-            completion = true,
-            hover = true,
-            keyOrdering = false,
-            schemas = {
-                -- kubernetes so em pastas k8s/manifests, nao em todo yaml
-                kubernetes = {"**/k8s/**/*.yaml", "**/manifests/**/*.yaml", "*.k8s.yaml"},
-                ["https://json.schemastore.org/cloudbuild.json"] = {
-                    "cloudbuild.yaml", "cloudbuild.yml",
-                    "**/cloudbuild*.yaml", "**/cloudbuild*.yml",
-                },
-                ["https://json.schemastore.org/github-workflow.json"] = {
-                    ".github/workflows/*.yml", ".github/workflows/*.yaml",
-                },
-                ["https://json.schemastore.org/github-action.json"] = {
-                    "action.yml", "action.yaml", ".github/actions/**/action.y*ml",
-                },
-                -- globs com "**/" nao casam na raiz do projeto, por isso as duas formas
-                ["https://raw.githubusercontent.com/compose-spec/compose-go/master/schema/compose-spec.json"] = {
-                    "docker-compose*.y*ml", "compose*.y*ml",
-                    "**/docker-compose*.y*ml", "**/compose*.y*ml",
-                },
-            }
-        }
-    }
-})
+-- vim.lsp.config("yamlls", -- LSP yaml-language-server
+-- {
+--     settings = {
+--         yaml = {
+--             -- catalogo do schemastore: detecta ansible, gitlab-ci, dependabot, etc.
+--             schemaStore = { enable = true, url = "https://www.schemastore.org/api/json/catalog.json" },
+--             validate = true,
+--             completion = true,
+--             hover = true,
+--             keyOrdering = false,
+--             schemas = {
+--                 -- kubernetes so em pastas k8s/manifests, nao em todo yaml
+--                 kubernetes = {"**/k8s/**/*.yaml", "**/manifests/**/*.yaml", "*.k8s.yaml"},
+--                 ["https://json.schemastore.org/cloudbuild.json"] = {
+--                     "cloudbuild.yaml", "cloudbuild.yml",
+--                     "**/cloudbuild*.yaml", "**/cloudbuild*.yml",
+--                 },
+--                 ["https://json.schemastore.org/github-workflow.json"] = {
+--                     ".github/workflows/*.yml", ".github/workflows/*.yaml",
+--                 },
+--                 ["https://json.schemastore.org/github-action.json"] = {
+--                     "action.yml", "action.yaml", ".github/actions/**/action.y*ml",
+--                 },
+--                 -- globs com "**/" nao casam na raiz do projeto, por isso as duas formas
+--                 ["https://raw.githubusercontent.com/compose-spec/compose-go/master/schema/compose-spec.json"] = {
+--                     "docker-compose*.y*ml", "compose*.y*ml",
+--                     "**/docker-compose*.y*ml", "**/compose*.y*ml",
+--                 },
+--             }
+--         }
+--     }
+-- })
 
 
  vim.lsp.config('lua_ls', {
