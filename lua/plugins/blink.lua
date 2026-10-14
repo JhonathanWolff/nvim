@@ -48,6 +48,17 @@ return {
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
       default = { 'lsp', 'path', 'snippets', 'buffer' },
+      providers = {
+        snippets = {
+          transform_items = function(_, items)
+            return vim.tbl_filter(function(item)
+              if item.kind ~= require('blink.cmp.types').CompletionItemKind.Snippet then return true end
+              local text = item.insertText or (item.textEdit and item.textEdit.newText)
+              return not text or pcall(vim.lsp._snippet_grammar.parse, text)
+            end, items)
+          end,
+        },
+      },
     },
 
     -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance

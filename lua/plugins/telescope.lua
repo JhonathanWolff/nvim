@@ -25,7 +25,16 @@ return
                     '--line-number', '--column', '--smart-case',
                     '--no-ignore', '--hidden',
                 },
-                file_ignore_patterns = { '^%.git/', '/%.git/', 'node_modules/' },
+                file_ignore_patterns = {
+                    '^%.git/', '/%.git/',
+                    'node_modules/',
+                    '__pycache__/',
+                    '%.pyc$',
+                    '^%.venv/', '/%.venv/', '^venv/', '/venv/',
+                    '%.mypy_cache/', '%.pytest_cache/', '%.ruff_cache/',
+                    '^dist/', '^build/', '%.egg%-info/',
+                    '^target/', '^%.next/', '^%.cache/',
+                },
                 mappings = {
                     i = {                             -- Mappings for insert mode
                         ["<M-q>"] = actions.send_to_qflist,
