@@ -1,0 +1,12 @@
+{
+    "try/except": {
+        "prefix": "try",
+        "body": ["try:", "\t${1:pass}", "except ${2:Exception} as ${3:e}:", "\t${4:raise}"],
+        "description": "try/except blocks"
+    },
+    "try/except/finally": {
+        "prefix": "tryf",
+        "body": ["try:", "\t${1:pass}", "except ${2:Exception} as ${3:e}:", "\t${4:raise}", "finally:", "\t${5:pass}"],
+        "description": "try/except/finally blocks"
+    }
+}
