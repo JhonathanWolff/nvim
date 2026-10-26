@@ -76,6 +76,7 @@ return {
 		local dap = require("dap")
         require('dap-python').setup()
         require("config.daps.javascript") -- js/ts adapter config
+        require("config.daps.go")
 
         require("nvim-dap-virtual-text").setup({
             enabled=false
